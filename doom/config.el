@@ -31,6 +31,12 @@
 
 (setq doom-private-dir "~/.config/home-manager/doom/")
 
+(use-package! reverse-im
+  :config
+  (reverse-im-activate "russian-computer") ; Активируем для русской раскладки
+  (reverse-im-add-resource-chain "russian-computer"))
+
+
 ;; Динамически определяем путь к профилю Nix (работает и на Mac, и на Linux)
 (let ((nix-bin (expand-file-name "~/.nix-profile/bin")))
   (when (file-directory-p nix-bin)

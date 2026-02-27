@@ -3,13 +3,15 @@
 {
   imports = [
     ./dev.nix
-	./emacs.nix
-	./fish.nix
+    ./emacs.nix
+    ./fish.nix
+    ./tmux.nix
   ];
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "pifpa";
-  home.homeDirectory = "/Users/pifpa";
+  home.homeDirectory = if pkgs.stdenv.isDarwin then "/Users/${config.home.username}" else "/home/${config.home.username}";
+
 
   # This value determines the Home Manager release that your configuration is
   # compatible with. This helps avoid breakage when a new Home Manager release

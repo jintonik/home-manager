@@ -5,6 +5,27 @@
     enable = true;
     interactiveShellInit = ''
       set -g fish_greeting "" # Убираем приветствие
+
+      # 1. Отключаем надоедливое сообщение о миграции
+      set -g fish_key_bindings fish_default_key_bindings
+
+      # 2. Форсируем цвета для Fish 4.0 (новый синтаксис)
+      set -gx TERM xterm-256color
+      set -gx COLORTERM truecolor
+
+      # Принудительно задаем основные цвета, если они "слетели"
+      set -g fish_color_command green --bold
+      set -g fish_color_keyword cyan --bold
+      set -g fish_color_quote yellow
+      set -g fish_color_redirection blue
+      set -g fish_color_end white
+      set -g fish_color_error red
+      set -g fish_color_param cyan
+      set -g fish_color_comment 555
+      set -g fish_color_selection --background=brblack
+      set -g fish_color_search_match --background=brblack
+      set -g fish_color_autosuggestion 555
+
       fish_add_path $HOME/.config/emacs/bin #Doom
     '';
     # Полезные сокращения (алиасы)

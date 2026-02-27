@@ -1,0 +1,28 @@
+.DS_Store
+.idea
+*.log
+tmp/
+
+# Nix/Home Manager
+result
+result-*
+.envrc
+.direnv/
+
+# macOS мусор
+.DS_Store
+
+# Doom Emacs локальные файлы
+# (если ты хранишь папку doom/ внутри home-manager)
+doom/.local/
+doom/.pkgs/
+scripts/
+
+# Резервные копии, которые создает Home Manager
+*.bak
+*.old
+
+# Секреты
+*.pem
+id_rsa*
+secrets.nix
