@@ -23,3 +23,8 @@ ln -s $(which libtool) ~/.nix-profile/bin/glibtool
 chsh -s $(which fish)
 ```
 
+### Cleanup 
+``` bash
+nix-collect-garbage -d
+```
+
