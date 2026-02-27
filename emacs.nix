@@ -20,7 +20,10 @@
     
         # Для модуля vterm (чтобы скомпилировался внутри Emacs)
         cmake
+		gnumake
         libtool
+		# Добавляем обертку, которая сделает glibtool доступным для скриптов
+		(writeShellScriptBin "glibtool" "exec ${libtool}/bin/libtool \"$@\"")
         gcc
     ];
 

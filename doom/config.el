@@ -29,6 +29,26 @@
 ;; refresh your font settings. If Emacs still can't find your font, it likely
 ;; wasn't installed correctly. Font issues are rarely Doom issues!
 
+(setq doom-private-dir "~/.config/home-manager/doom/")
+
+;; Динамически определяем путь к профилю Nix (работает и на Mac, и на Linux)
+(let ((nix-bin (expand-file-name "~/.nix-profile/bin")))
+  (when (file-directory-p nix-bin)
+    (setq exec-path (cons nix-bin exec-path))
+    (setenv "PATH" (concat nix-bin ":" (getenv "PATH")))))
+
+;; Для vterm: ищем glibtool или libtool в текущем PATH, который мы только что обновили
+(let ((libtool-path (executable-find "glibtool")))
+  (when libtool-path
+    (setq vterm-module-cmake-args (concat "-DLIBTOOL_BIN=" libtool-path))))
+
+;; Указываем Emacs использовать Fish из Nix в качестве основной оболочки
+(setq shell-file-name (executable-find "fish"))
+
+;; Явно задаем оболочку для vterm
+(setq vterm-shell (executable-find "fish"))
+
+
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:

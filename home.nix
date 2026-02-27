@@ -76,11 +76,14 @@
   #  /etc/profiles/per-user/pifpa/etc/profile.d/hm-session-vars.sh
   #
   home.sessionVariables = {
-    # EDITOR = "emacs";
+    EDITOR = "emacs -nw";
+    VISUAL = "emacs -nw";
+
   };
 
   home.sessionPath = [
     "$HOME/.nix-profile/bin"
+    "$HOME/.cargo/bin"
     "/nix/var/nix/profiles/default/bin"
   ];
 
