@@ -2,13 +2,13 @@
 {
   home.packages = with pkgs; [
     #Node
-	nodejs
+    nodejs
     
-	#Rust
-	rustup
+    #Rust
+    rustup
 
-	#Utils
-	nodePackages.typescript-language-server
+	  #Utils
+	  nodePackages.typescript-language-server
   ];
 
   programs.direnv = {
