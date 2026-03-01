@@ -23,6 +23,14 @@ ln -s $(which libtool) ~/.nix-profile/bin/glibtool
 chsh -s $(which fish)
 ```
 
+#### Docker
+
+``` bash
+sudo gpasswd -a $USER docker # + restart after
+```
+
+`
+
 ### Cleanup 
 ``` bash
 nix-collect-garbage -d
