@@ -7,6 +7,10 @@
     ./fish.nix
     ./tmux.nix
   ];
+
+  # Разрешаем установку unfree пакетов (как Symbola)
+  nixpkgs.config.allowUnfree = true;
+
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "pifpa";
@@ -24,7 +28,7 @@
 
   # The home.packages option allows you to install Nix packages into your
   # environment.
-  home.packages = [
+  home.packages = with pkgs; [
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
     # pkgs.hello
@@ -41,9 +45,9 @@
     # (pkgs.writeShellScriptBin "my-hello" ''
     #   echo "Hello, ${config.home.username}!"
     # '')
-
-
-
+    (if (pkgs ? nerd-fonts)
+    then pkgs.nerd-fonts.caskaydia-cove
+    else (pkgs.nerdfonts.override { fonts = [ "CaskadiaCode" ]; }))
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
@@ -77,6 +81,8 @@
   #
   #  /etc/profiles/per-user/pifpa/etc/profile.d/hm-session-vars.sh
   #
+  fonts.fontconfig.enable = pkgs.stdenv.isLinux;
+
   home.sessionVariables = {
     EDITOR = "emacs -nw";
     VISUAL = "emacs -nw";

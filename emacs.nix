@@ -3,7 +3,9 @@
 {
   programs.emacs = {
     enable = true;
-    package = pkgs.emacs30;
+    package = if pkgs.stdenv.isDarwin
+	      then pkgs.emacs30
+	      else pkgs.emacs-pgtk;
     extraPackages = epkgs: with epkgs; [
       reverse-im
     ];
@@ -20,7 +22,11 @@
     ripgrep     # Обязательно для поиска (doom/lookup)
     fd          # Обязательно для быстрого поиска файлов
     gnutls      # Для безопасных соединений (скачивание пакетов)
-    
+   
+    sbcl        # :lang common-lisp
+    nixfmt      # :lang nix
+    symbola     # Шрифт-fallback (чтобы не было крашей)
+ 
     # Для модуля vterm (чтобы скомпилировался внутри Emacs)
     cmake
     gnumake

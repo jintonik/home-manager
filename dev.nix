@@ -7,8 +7,8 @@
     #Rust
     rustup
 
-	  #Utils
-	  nodePackages.typescript-language-server
+    #Utils
+    nodePackages.typescript-language-server
   ];
 
   programs.direnv = {

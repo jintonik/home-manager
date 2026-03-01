@@ -29,12 +29,17 @@
 ;; refresh your font settings. If Emacs still can't find your font, it likely
 ;; wasn't installed correctly. Font issues are rarely Doom issues!
 
+
+;; Переезд doom congurations
 (setq doom-private-dir "~/.config/home-manager/doom/")
 
+
+;; Навигация с русской раскладкой
 (use-package! reverse-im
   :config
+  (when (fboundp 'reverse-im-add-resource-chain)
   (reverse-im-activate "russian-computer") ; Активируем для русской раскладки
-  (reverse-im-add-resource-chain "russian-computer"))
+  (reverse-im-add-resource-chain "russian-computer")))
 
 
 ;; Динамически определяем путь к профилю Nix (работает и на Mac, и на Linux)
@@ -49,10 +54,12 @@
     (setq vterm-module-cmake-args (concat "-DLIBTOOL_BIN=" libtool-path))))
 
 ;; Указываем Emacs использовать Fish из Nix в качестве основной оболочки
-(setq shell-file-name (executable-find "fish"))
+(setq shell-file-name (executable-find "bash"))
 
 ;; Явно задаем оболочку для vterm
 (setq vterm-shell (executable-find "fish"))
+(setq-default vterm-shell (executable-find "fish"))
+(setq-default explicit-shell-file-name (executable-find "fish"))
 
 
 ;; There are two ways to load a theme. Both assume the theme is installed and
