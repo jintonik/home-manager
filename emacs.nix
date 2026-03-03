@@ -34,6 +34,8 @@
     # Добавляем обертку, которая сделает glibtool доступным для скриптов
     (writeShellScriptBin "glibtool" "exec ${libtool}/bin/libtool \"$@\"")
     gcc
+    # Все популярные грамматики
+    emacsPackages.treesit-grammars.with-all-grammars
   ];
 
   # Прописываем путь к бинарнику doom в PATH, если он в стандартном месте

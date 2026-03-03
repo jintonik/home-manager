@@ -51,6 +51,9 @@ chsh -s $(which fish)
 #### Docker
 ``` bash
 sudo gpasswd -a $USER docker # + restart after
+sudo pacman -S docker
+sudo systemctl enable --now docker.service
+sudo usermod -aG docker $USER
 ```
 
 ### Cleanup 
