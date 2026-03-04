@@ -3,6 +3,7 @@
   home.packages = with pkgs; [
     #Node
     nodejs
+    pnpm
     
     #Rust
     rustup
