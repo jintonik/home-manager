@@ -45,9 +45,13 @@
     # (pkgs.writeShellScriptBin "my-hello" ''
     #   echo "Hello, ${config.home.username}!"
     # '')
+    # (pkgs.nerdfonts.override { fonts = [ "CaskaydiaMono" ]; })
     (if (pkgs ? nerd-fonts)
-    then pkgs.nerd-fonts.caskaydia-cove
-    else (pkgs.nerdfonts.override { fonts = [ "CaskadiaCode" ]; }))
+    then [
+      pkgs.nerd-fonts.caskaydia-cove
+	  pkgs.nerd-fonts.symbols-only
+    ]
+    else (pkgs.nerdfonts.override { fonts = [ "CascadiaCode" "NerdFontsSymbolsOnly" ]; }))
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage

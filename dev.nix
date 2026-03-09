@@ -4,7 +4,18 @@
     #Node
     nodejs
     pnpm
-    
+
+    # Shell
+    shellcheck
+
+    # Web (JS/CSS/HTML)
+    nodePackages.stylelint
+    nodePackages.js-beautify
+    nodePackages.typescript-language-server
+
+    # Markdown
+    pandoc
+
     #Rust
     rustup
     sqlx-cli         # Утилита для миграций (обязательно!)
@@ -13,7 +24,6 @@
     openssl          # Для защищенных соединений
 
     #Utils
-    nodePackages.typescript-language-server
     docker
   ];
 

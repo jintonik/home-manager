@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 
 {
   programs.emacs = {
@@ -22,11 +22,12 @@
     ripgrep     # Обязательно для поиска (doom/lookup)
     fd          # Обязательно для быстрого поиска файлов
     gnutls      # Для безопасных соединений (скачивание пакетов)
-   
-    sbcl        # :lang common-lisp
+    
+	# Заменяем неработающий пакет symbola на noto-fonts
+    # noto-fonts # Шрифт-fallback (чтобы не было крашей)
+    freefont_ttf
+	sbcl        # :lang common-lisp
     nixfmt      # :lang nix
-    symbola     # Шрифт-fallback (чтобы не было крашей)
- 
     # Для модуля vterm (чтобы скомпилировался внутри Emacs)
     cmake
     gnumake
@@ -36,8 +37,17 @@
     gcc
     # Все популярные грамматики
     emacsPackages.treesit-grammars.with-all-grammars
+  ] ++ lib.optionals stdenv.isDarwin [
+      coreutils # Нужен для gls на macOS
   ];
+  # Создаем симлинк gls только на macOS, чтобы dired не падал
+   home.file."bin/gls" = lib.mkIf pkgs.stdenv.isDarwin {
+     source = "${pkgs.coreutils}/bin/ls";
+   };
 
   # Прописываем путь к бинарнику doom в PATH, если он в стандартном месте
-  home.sessionPath = [ "$HOME/.config/emacs/bin" ];
+  home.sessionPath = [ 
+    "$HOME/.config/emacs/bin"
+	"$HOME/bin"
+  ];
 }

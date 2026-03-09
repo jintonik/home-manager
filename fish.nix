@@ -28,6 +28,12 @@
 
       fish_add_path $HOME/.config/emacs/bin #Doom
     '';
+    
+	shellInit = ''
+      fish_add_path -m -p "$HOME/bin"
+	  set -gx GOOGLE_CLOUD_PROJECT "prismatic-smoke-469211-d1"
+    '';
+
     # Полезные сокращения (алиасы)
     shellAliases = {
       ls = "eza --icons";
