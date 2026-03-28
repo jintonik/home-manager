@@ -26,6 +26,7 @@ home-manager switch
 
 6. Sync doom
 ``` bash
+git clone --depth 1 https://github.com/doomemacs/doomemacs ~/.config/emacs
 doom sync
 ```
 

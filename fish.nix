@@ -25,13 +25,13 @@
       set -g fish_color_selection --background=brblack
       set -g fish_color_search_match --background=brblack
       set -g fish_color_autosuggestion 555
-
-      fish_add_path $HOME/.config/emacs/bin #Doom
     '';
     
 	shellInit = ''
     fish_add_path -m -p "$HOME/bin"
+    fish_add_path $HOME/.config/emacs/bin # Doom
 	  set -gx GOOGLE_CLOUD_PROJECT ""
+
     '';
 
     # Полезные сокращения (алиасы)
