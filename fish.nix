@@ -30,8 +30,8 @@
     '';
     
 	shellInit = ''
-      fish_add_path -m -p "$HOME/bin"
-	  set -gx GOOGLE_CLOUD_PROJECT "prismatic-smoke-469211-d1"
+    fish_add_path -m -p "$HOME/bin"
+	  set -gx GOOGLE_CLOUD_PROJECT ""
     '';
 
     # Полезные сокращения (алиасы)
