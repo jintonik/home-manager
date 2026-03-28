@@ -8,8 +8,8 @@
     ./tmux.nix
   ];
 
-  # Разрешаем установку unfree пакетов (как Symbola)
-  nixpkgs.config.allowUnfree = true;
+  # Разрешаем/запрещаем установку unfree пакетов (как Symbola)
+  # nixpkgs.config.allowUnfree = true;
 
   # Home Manager needs a bit of information about you and the paths it should
   # manage.

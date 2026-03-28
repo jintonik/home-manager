@@ -26,7 +26,7 @@
 	# Заменяем неработающий пакет symbola на noto-fonts
     # noto-fonts # Шрифт-fallback (чтобы не было крашей)
     freefont_ttf
-	sbcl        # :lang common-lisp
+	  sbcl        # :lang common-lisp
     nixfmt      # :lang nix
     # Для модуля vterm (чтобы скомпилировался внутри Emacs)
     cmake
@@ -48,6 +48,6 @@
   # Прописываем путь к бинарнику doom в PATH, если он в стандартном месте
   home.sessionPath = [ 
     "$HOME/.config/emacs/bin"
-	"$HOME/bin"
+	  "$HOME/bin"
   ];
 }
